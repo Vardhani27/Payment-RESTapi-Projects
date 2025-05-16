@@ -95,8 +95,53 @@ This allows you to explore and test all API endpoints from the browser.
 i've added screenshots you can check
 
 
+## SAMPLE DATA
+Users: 
+```bash
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "1234567890"
+}
+```
+
+Payments:
+```bash
+{
+  "user_id": 1,
+  "amount": 500.0,
+  "payment_method": "UPI",
+  "status": "completed",
+  "currency": "INR",
+  "description": "Payment for services"
+}
+```
+
+
 ## SCHEMA
-schemais available in schema.sql
+Schema is available in schema.sql
+```bash
+CREATE DATABASE IF NOT EXISTS payment_db;
+USE payment_db;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(15)
+);
+
+CREATE TABLE payments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    amount DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) DEFAULT 'pending',
+    currency VARCHAR(10) DEFAULT 'INR',
+    payment_method VARCHAR(50),
+    description TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+```
 
 
 ## EXTRA
