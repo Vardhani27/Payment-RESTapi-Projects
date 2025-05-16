@@ -95,13 +95,22 @@ This allows you to explore and test all API endpoints from the browser.
 i've added screenshots you can check
 
 
+## Data Security (Encryption & Masking)
+To enhance security, this API encrypts sensitive card data before storage
+card_no and card_cvc are AES-encrypted before being saved in the database.
+When returned in the response, card_no is masked, showing only the last 4 digits (e.g., XXXX-XXXX-XXXX-1234).
+The full CVC is never returned in API responses.
+This approach protects user card data while complying with basic data privacy practices.
+
+
 ## SAMPLE DATA
 Users: 
 ```bash
 {
   "name": "John Doe",
   "email": "john@example.com",
-  "phone": "1234567890"
+  "phone": "1234567890",
+  "country": "India"
 }
 ```
 
@@ -110,7 +119,10 @@ Payments:
 {
   "user_id": 1,
   "amount": 500.0,
-  "payment_method": "UPI",
+  "payment_method": "Credit Card",
+  "card_no": "4111111111111111",
+  "card_expiry": "2026-12-01",
+  "card_cvc": "123",
   "status": "completed",
   "currency": "INR",
   "description": "Payment for services"
@@ -120,31 +132,8 @@ Payments:
 
 ## SCHEMA
 Schema is available in schema.sql
-```bash
-CREATE DATABASE IF NOT EXISTS payment_db;
-USE payment_db;
-
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone VARCHAR(15)
-);
-
-CREATE TABLE payments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    amount DECIMAL(10, 2) NOT NULL,
-    status VARCHAR(50) DEFAULT 'pending',
-    currency VARCHAR(10) DEFAULT 'INR',
-    payment_method VARCHAR(50),
-    description TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-```
 
 
 ## EXTRA
 You can use tools like Postman, curl  or the built-in Swagger UI to test the API.
-
 No authentication is used to keep things simple for this assignment(JWT can be added for enhancement).
