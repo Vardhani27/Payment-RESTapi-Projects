@@ -19,8 +19,8 @@ def get_user_by_id(user_id):
 def create_user(data):
     conn = get_db_connection()
     cursor = conn.cursor()
-    sql = "INSERT INTO users (name, email, phone) VALUES (%s, %s, %s)"
-    cursor.execute(sql, (data["name"], data["email"], data.get("phone")))
+    sql = "INSERT INTO users (name, email, phone, country) VALUES (%s, %s, %s, %s)"
+    cursor.execute(sql, (data["name"], data["email"], data.get("phone"), data.get("country")))
     conn.commit()
     user_id = cursor.lastrowid
     conn.close()
@@ -29,8 +29,8 @@ def create_user(data):
 def update_user(user_id, data):
     conn = get_db_connection()
     cursor = conn.cursor()
-    sql = "UPDATE users SET name = %s, email = %s, phone = %s WHERE id = %s"
-    cursor.execute(sql, (data["name"], data["email"], data.get("phone"), user_id))
+    sql = "UPDATE users SET name = %s, email = %s, phone = %s, country = %s WHERE id = %s"
+    cursor.execute(sql, (data["name"], data["email"], data.get("phone"), data.get("country"), user_id))
     conn.commit()
     conn.close()
 

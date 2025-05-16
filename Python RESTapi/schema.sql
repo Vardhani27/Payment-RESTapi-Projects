@@ -8,7 +8,9 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     phone VARCHAR(15),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    country VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Create payments table with foreign key to users
@@ -17,9 +19,12 @@ CREATE TABLE IF NOT EXISTS payments (
     user_id INT NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     currency VARCHAR(10) DEFAULT 'INR',
-    payment_method VARCHAR(50), -- e.g., 'credit_card', 'upi', 'paypal'
-    status VARCHAR(50) DEFAULT 'pending', -- e.g., 'completed', 'failed', 'pending'
     description TEXT,
+    card_no VARCHAR(255) NOT NULL UNIQUE,
+    card_expiry DATE,
+    card_cvc VARCHAR(255),
+    payment_method VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );

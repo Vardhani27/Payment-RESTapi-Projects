@@ -6,6 +6,7 @@ def get_db_connection():
         host=DB_CONFIG["host"],
         user=DB_CONFIG["user"],
         password=DB_CONFIG["password"],
-        database=DB_CONFIG["database"]
+        database=DB_CONFIG["database"],
+        port=3307
     )
     return conn
