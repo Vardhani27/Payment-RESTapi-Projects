@@ -24,6 +24,10 @@ This is a simple RESTful API built using **Flask** and **MySQL** to manage users
 
 │ └── user_routes.py # User routes
 
+├── utils
+
+│ ├── crypto_utils.py # encryption for cvc
+
 ├── screenshots
 
 │   ├── swagger-ui.png
