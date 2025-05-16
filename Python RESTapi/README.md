@@ -65,17 +65,27 @@ By default, the app runs on: http://localhost:8080
 
 
 ## API Endpoints
-Method  |  	Endpoint       |  Description
-GET	    |   /users	       |  Get all users
-POST    |  	/users	       |  Create a new user
-GET	    |   /users/<id>	   |  Get a single user
-PUT	    |   /users/<id>	   |  Update a user
-DELETE  |  	/users/<id>	   |  Delete a user
-GET	    |   /payments	   |  Get all payments
-POST    |  	/payments	   |  Create a payment
-GET	    |   /payments/<id> |  Get a payment
-PUT	    |   /payments/<id> |  Update a payment
-DELETE  |  	/payments/<id> |  Delete a payment
+Method  -  	Endpoint       -  Description
+
+GET	    -   /users	       -  Get all users
+
+POST    -  	/users	       -  Create a new user
+
+GET	    -   /users/<id>	   -  Get a single user
+
+PUT	    -   /users/<id>	   -  Update a user
+
+DELETE  -  	/users/<id>	   -  Delete a user
+
+GET	    -   /payments	     -  Get all payments
+
+POST    -  	/payments	     -  Create a payment
+
+GET	    -   /payments/<id> -  Get a payment
+
+PUT	    -   /payments/<id> -  Update a payment
+
+DELETE  -  	/payments/<id> -  Delete a payment
 
 
 ## Swagger API Docs
