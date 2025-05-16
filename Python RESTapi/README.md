@@ -5,20 +5,35 @@ This is a simple RESTful API built using **Flask** and **MySQL** to manage users
 ## 📁 Project Structure
 
 ├── app.py # Main entry point
+
 ├── db.py # Database connection logic
+
 ├── config.py # DB configuration
+
 ├── schema.sql # MySQL schema
+
 ├── models
+
 │ ├── payment_model.py # Payment-related DB operations
+
 │ └── user_model.py # User-related DB operations
+
 ├── routes
+
 │ ├── payment_routes.py # Payment routes
+
 │ └── user_routes.py # User routes
+
 ├── screenshots
+
 │   ├── swagger-ui.png
+
 │   ├── create-user-postman.png
+
 │   └── payment-response.png
+
 └── requirements.txt # Python dependencies
+
 
 ## Setup
 
